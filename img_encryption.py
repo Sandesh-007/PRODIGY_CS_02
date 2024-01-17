@@ -57,7 +57,7 @@ def main():
         elif choice == 'd':
             decrypt_choice()
         elif choice == 'q':
-            print("Quitting the program.")
+            print("Exitting the program.")
             exit()
         else:
             print("Invalid choice. Please choose 'e' for encryption, 'd' for decryption, or 'q' to quit.")
