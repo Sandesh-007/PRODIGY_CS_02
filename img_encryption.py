@@ -4,41 +4,41 @@ import numpy as np
 print("------------- Image Encryption Tool --------------")
 
 def encrypt_image(image_path, key):
-    # Open the image
+    # Opening the image
     original_image = Image.open(image_path)
 
-    # Convert the image to a NumPy array
+    # Converting the image to a NumPy array
     image_array = np.array(original_image)
 
-    # Apply a more complex mathematical operation to each pixel using the key
+    # Applying a more complex mathematical operation to each pixel using the key
     encrypted_image_array = (image_array * key) // (key + 1)
 
-    # Create a new image from the encrypted NumPy array
+    # Creating a new image from the encrypted NumPy array
     encrypted_image = Image.fromarray(np.uint8(encrypted_image_array))
 
-    # Save the encrypted image
+    # Saving the encrypted image
     encrypted_image_path = "encrypted_image.png"
     encrypted_image.save(encrypted_image_path)
     print(f"Image encrypted successfully. Encrypted image saved at: {encrypted_image_path}")
     exit()
 
 def decrypt_image(encrypted_image_path, key):
-    # Open the encrypted image
+    # Opening the encrypted image
     encrypted_image = Image.open(encrypted_image_path)
 
-    # Convert the image to a NumPy array
+    # Converting the image to a NumPy array
     encrypted_image_array = np.array(encrypted_image)
 
-    # Reverse the more complex encryption using the key
+    # Reversing the more complex encryption using the key
     decrypted_image_array = (encrypted_image_array * (key + 1)) // key
 
-    # Clip values to ensure they are in the valid pixel value range
+    # Clipping values to ensure they are in the valid pixel value range
     decrypted_image_array = np.clip(decrypted_image_array, 0, 255)
 
-    # Create a new image from the decrypted NumPy array
+    # Creating a new image from the decrypted NumPy array
     decrypted_image = Image.fromarray(np.uint8(decrypted_image_array))
 
-    # Save the decrypted image
+    # Saving the decrypted image
     decrypted_image_path = "decrypted_image.png"
     decrypted_image.save(decrypted_image_path)
     print(f"Image decrypted successfully. Decrypted image saved at: {decrypted_image_path}")
